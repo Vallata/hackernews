@@ -1,7 +1,9 @@
-<% @posts.each do |post| %>
-  <%= post.title %>
-  <%= post.url %>
-  <%= post.post_type %>
-  <%= post.post_author %>
-  <%= post.score %>
-<% end %>
+<div>
+  <h1>Posts</h1>
+  <ol>
+    <% @posts.each do |post| %>
+     <li><a href="<%= post.url %>"><%= post.title %></a> <br>
+     <%= post.post_type %> | by: <%= post.post_author %> | <%= post.score %></li>
+    <% end %>
+  </ol>
+</div>
