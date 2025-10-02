@@ -3,9 +3,9 @@ class PostsController < ApplicationController
   require "json"
   require "open-uri"
 
-  def get_beest_posts_from_hn_api
-    # je récupère les 10 premiers posts des tops stories de l'api HN
-    url = "https://hacker-news.firebaseio.com/v0/topstories.json"
+  def get_new_posts_from_hn_api
+    # je récupère les 10 derniers posts des tops stories de l'api HN
+    url = "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty"
     posts_serialized = URI.parse(url).read
     posts = JSON.parse(posts_serialized).first(10)
     # je les crée en DB (j'ai mis un title uniqueness true pour que ca ne crée pas de doublons)
