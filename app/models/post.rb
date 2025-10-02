@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
   validates :url, presence: true
   validates :post_type, presence: true
   validates :post_author, presence: true
