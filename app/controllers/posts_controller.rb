@@ -21,10 +21,10 @@ class PostsController < ApplicationController
     end
     redirect_to posts_path
   end
+  
+  def index
+    @posts = Post.all
+    @posts = Post.order(score: :desc)
+  end
 
-
-    def index
-      @posts = Post.all
-      @posts = Post.order(score: :desc)
-    end
 end
