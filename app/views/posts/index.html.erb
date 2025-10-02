@@ -1,1 +1,7 @@
-<%= @posts %>
+<% @posts.each do |post| %>
+  <%= post.title %>
+  <%= post.url %>
+  <%= post.post_type %>
+  <%= post.post_author %>
+  <%= post.score %>
+<% end %>
