@@ -2,8 +2,19 @@
   <h1>Posts</h1>
   <ol>
     <% @posts.each do |post| %>
-     <li><a href="<%= post.url %>"><%= post.title %></a> <br>
-     <%= post.post_type %> | by: <%= post.post_author %> | <%= post.score %></li>
+     <li>
+      <a href="<%= post.url %>"><%= post.title %></a> <br>
+      <%= post.post_type %>
+      | by: <%= post.post_author %>
+      | <%= post.score %>
+      <% if current_user.votes.where(post: post).count == 0 %>
+        <%= simple_form_for [post, @vote] do |f| %>
+          <%= f.button :submit, 'vote' %>
+        <% end %>
+      <% else %>
+        <%= link_to "Delete vote", data: { turbo_method: :delete,turbo_confirm: "Are you sure?" } %>
+      <% end %>
+     </li>
     <% end %>
   </ol>
 </div>
